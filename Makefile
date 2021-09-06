@@ -6,7 +6,7 @@
 #    By: lbisscho <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 13:17:17 by lbisscho       #+#    #+#                 #
-#    Updated: 2019/11/20 15:00:49 by lbisscho      ########   odam.nl          #
+#    Updated: 2019/11/14 17:46:34 by lbisscho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,27 +22,16 @@ SRC = ft_bzero.c ft_isascii.c ft_memccpy.c ft_memcpy.c ft_strchr.c \
 
 OBJ = $(SRC:.c=.o)
 
-BONUS = ft_lstnew_bonus.c ft_lstsize_bonus.c \
-ft_lstadd_front_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c \
-ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
-ft_lstmap_bonus.c
-
-BOBJ = $(BONUS:.c=.o)
-
 all: $(NAME)
 
-$(NAME): $(SRC) $(OBJ)
+$(NAME): $(SRC)
 	gcc -Wall -Wextra -Werror -I . -c $(SRC)
 	ar -rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ) $(BOBJ)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus:
-	gcc -Wall -Wextra -Werror -I . -c $(BONUS)
-	ar -rcs  $(NAME) $(BOBJ)
